@@ -2,10 +2,33 @@
 Input: a List of integers as well as an integer `k` representing the size of the sliding window
 Returns: a List of integers
 '''
+
+def find_max(nums):
+    current_max = None
+    for n in nums:
+        if current_max is None or n > current_max:
+            current_max = n
+    return current_max
+
+
 def sliding_window_max(nums, k):
     # Your code here
+    list_to_return = list()
+    if k > len(nums):
+        return "Window too large for data set."
+    elif k == len(nums):
+        list_to_return.append(find_max(nums))
+        return list_to_return
+    else:
+        
+        for i in range(0, len(nums) - 1):
+            check_slice = nums[i : (i + k) + 1 : 1]
+            if len(check_slice) < k:
+                break
+            else:
+                list_to_return.append(find_max(check_slice))
+    return list_to_return
 
-    pass
 
 
 if __name__ == '__main__':

@@ -2,10 +2,21 @@
 Input: a List of integers
 Returns: a List of integers
 '''
-def product_of_all_other_numbers(arr):
-    # Your code here
 
-    pass
+def get_product(arr):
+    product = 1
+    for x in range(0, len(arr) - 1):
+        factor = arr[x]
+        product *= factor
+    return product
+
+def product_of_all_other_numbers(arr):
+    ret_list = list()
+    for i in range(0, len(arr) - 1):
+        lhs = arr[ : i]
+        rhs = arr[i+1 : ]
+        ret_list.append(get_product([lhs, rhs]))
+    return ret_list
 
 
 if __name__ == '__main__':

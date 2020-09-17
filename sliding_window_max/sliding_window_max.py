@@ -20,9 +20,8 @@ def sliding_window_max(nums, k):
         list_to_return.append(find_max(nums))
         return list_to_return
     else:
-        
-        for i in range(0, len(nums) - 1):
-            check_slice = nums[i : (i + k) + 1 : 1]
+        for i in range(0, len(nums)):
+            check_slice = nums[i : (i + k)]
             if len(check_slice) < k:
                 break
             else:

@@ -12,10 +12,19 @@ def get_product(arr):
 
 def product_of_all_other_numbers(arr):
     ret_list = list()
+    if len(arr) < 2:
+        return -1
+    elif len(arr) == 2:
+        replacement = arr[1]
+        del arr[1]
+        arr.insert(0, replacement)
+        return arr
+
     for i in range(0, len(arr) - 1):
         lhs = arr[ : i]
         rhs = arr[i+1 : ]
-        ret_list.append(get_product([lhs, rhs]))
+        product_to_append = get_product(lhs) * get_product(rhs)
+        ret_list.append(product_to_append)
     return ret_list
 
 
